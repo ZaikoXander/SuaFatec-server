@@ -41,6 +41,13 @@ model Comment {
   approved Boolean @default(false)
 }
 
+model Photo {
+  id Int @id @default(autoincrement())
+  url String
+  institutionId Int
+  institution Institution @relation(fields: [institutionId], references: [id])
+}
+
 model CourseOffering {
   id Int @id @default(autoincrement())
   courseId Int
@@ -57,7 +64,7 @@ model Institution {
   address String @unique
   cityId Int
   city City @relation(fields: [cityId], references: [id])
-  photoUrls String[]
+  photos Photo[]
   courseOfferings CourseOffering[]
 }
 
