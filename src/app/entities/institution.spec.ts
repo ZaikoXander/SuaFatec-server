@@ -12,7 +12,7 @@ describe(Institution, () => {
           'Fatec de Praia Grande',
           'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
           city,
-          ['https://www.fatecpg.edu.br/img/fatec.png'],
+          [],
           [],
         ),
       ).toBeInstanceOf(Institution)))
@@ -22,19 +22,18 @@ describe(Institution, () => {
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
     city,
-    ['https://www.fatecpg.edu.br/img/fatec.png'],
+    [],
     [],
   )
 
-  describe('#id', () =>
-    it('returns the id', () => expect(institution.id).toBe(1)))
+  describe('#id', () => it('returns id', () => expect(institution.id).toBe(1)))
 
   describe('#name', () =>
-    it('returns the name', () =>
+    it('returns name', () =>
       expect(institution.name).toBe('Fatec de Praia Grande')))
 
   describe('#address', () =>
-    it('returns the address', () =>
+    it('returns address', () =>
       expect(institution.address).toBe(
         'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
       )))
@@ -43,12 +42,9 @@ describe(Institution, () => {
     it('returns city', () => expect(institution.city).toBe(city)))
 
   describe('#photoUrls', () =>
-    it('returns the photoUrls', () =>
-      expect(institution.photoUrls).toStrictEqual([
-        'https://www.fatecpg.edu.br/img/fatec.png',
-      ])))
+    it('returns photos', () => expect(institution.photos).toStrictEqual([])))
 
   describe('#courseOfferings', () =>
-    it('returns the courseOfferings', () =>
+    it('returns courseOfferings', () =>
       expect(institution.courseOfferings).toStrictEqual([])))
 })

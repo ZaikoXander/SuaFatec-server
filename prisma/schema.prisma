@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model City {
+  id  Int    @id @default(autoincrement())
+  name String @unique
+  institutions Institution[]
+}
+
+model Course {
+  id Int @id @default(autoincrement())
+  courseOfferings CourseOffering[]
+}
+
+enum Shift {
+  morning
+  afternoon
+  night
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  courseOfferingId Int
+  courseOffering CourseOffering @relation(fields: [courseOfferingId], references: [id])
+  studentName String
+  content String
+  quantityLikes Int
+  conclusionDate DateTime
+  approved Boolean @default(false)
+}
+
+model Photo {
+  id Int @id @default(autoincrement())
+  url String
+  institutionId Int
+  institution Institution @relation(fields: [institutionId], references: [id])
+}
+
+model CourseOffering {
+  id Int @id @default(autoincrement())
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+  institutionId Int
+  institution Institution @relation(fields: [institutionId], references: [id])
+  shifts Shift[]
+  comments Comment[]
+}
+
+model Institution {
+  id   Int    @id @default(autoincrement())
+  name String @unique 
+  address String @unique
+  cityId Int
+  city City @relation(fields: [cityId], references: [id])
+  photos Photo[]
+  courseOfferings CourseOffering[]
+}
+
+model Admin {
+  id Int @id @default(autoincrement())
+  name String
+  password String
+}

@@ -32,6 +32,12 @@
 $ pnpm install
 ```
 
+## Running REPL
+
+```bash
+$ pnpm start:repl
+```
+
 ## Running the app
 
 ```bash

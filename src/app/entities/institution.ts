@@ -1,4 +1,5 @@
 import type { City } from './city'
+import type { Photo } from './photo'
 import type { CourseOffering } from './courseOffering'
 
 export class Institution {
@@ -6,7 +7,7 @@ export class Institution {
   private _name: string
   private _address: string
   private _city: City
-  private _photoUrls: string[]
+  private _photos: Photo[]
   private _courseOfferings: CourseOffering[]
 
   constructor(
@@ -14,14 +15,14 @@ export class Institution {
     name: string,
     address: string,
     city: City,
-    photoUrls: string[],
+    photos: Photo[],
     courseOfferings: CourseOffering[],
   ) {
     this._id = id
     this._name = name
     this._address = address
     this._city = city
-    this._photoUrls = photoUrls
+    this._photos = photos
     this._courseOfferings = courseOfferings
   }
 
@@ -41,8 +42,8 @@ export class Institution {
     return this._city
   }
 
-  public get photoUrls(): string[] {
-    return this._photoUrls
+  public get photos(): Photo[] {
+    return this._photos
   }
 
   public get courseOfferings(): CourseOffering[] {
