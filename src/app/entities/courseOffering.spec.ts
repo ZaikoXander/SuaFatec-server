@@ -11,7 +11,7 @@ describe(CourseOffering, () => {
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
     city,
-    ['https://www.fatecpg.edu.br/img/fatec.png'],
+    [],
     [],
   )
 
