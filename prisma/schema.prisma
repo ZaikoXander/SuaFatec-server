@@ -58,6 +58,7 @@ model CourseOffering {
   institution Institution @relation(fields: [institutionId], references: [id])
   shifts Shift[]
   comments Comment[]
+  distanceLearning Boolean @default(false)
 }
 
 model Institution {
