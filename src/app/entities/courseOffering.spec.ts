@@ -3,7 +3,7 @@ import { CourseOffering } from './courseOffering'
 import { Institution } from './institution'
 
 describe(CourseOffering, () => {
-  const course = new Course(1, 'Ciência de Dados', 6, [])
+  const course = new Course(1, 'Ciência de Dados', 6)
   const institution = new Institution(
     1,
     'Fatec de Praia Grande',
