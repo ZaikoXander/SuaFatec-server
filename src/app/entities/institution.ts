@@ -1,29 +1,14 @@
-import type { City } from './city'
-import type { Photo } from './photo'
-import type { CourseOffering } from './courseOffering'
-
 export class Institution {
   private _id: number
   private _name: string
   private _address: string
-  private _city: City
-  private _photos: Photo[]
-  private _courseOfferings: CourseOffering[]
+  private _cityId: number
 
-  constructor(
-    id: number,
-    name: string,
-    address: string,
-    city: City,
-    photos: Photo[],
-    courseOfferings: CourseOffering[],
-  ) {
+  constructor(id: number, name: string, address: string, cityId: number) {
     this._id = id
     this._name = name
     this._address = address
-    this._city = city
-    this._photos = photos
-    this._courseOfferings = courseOfferings
+    this._cityId = cityId
   }
 
   public get id(): number {
@@ -38,15 +23,7 @@ export class Institution {
     return this._address
   }
 
-  public get city(): City {
-    return this._city
-  }
-
-  public get photos(): Photo[] {
-    return this._photos
-  }
-
-  public get courseOfferings(): CourseOffering[] {
-    return this._courseOfferings
+  public get cityId(): number {
+    return this._cityId
   }
 }

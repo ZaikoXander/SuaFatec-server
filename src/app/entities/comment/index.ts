@@ -1,27 +1,26 @@
-import type { CourseOffering } from '../courseOffering'
 import type { Content } from './content'
 import type { StudentName } from './studentName'
 
 export class Comment {
   private _id: number
-  private _courseOffering: CourseOffering
+  private _courseOfferingId: number
   private _studentName: StudentName
   private _content: Content
   private _quantityLikes: number
-  private _conclusionDate: string
+  private _conclusionDate: Date
   private _approved: boolean
 
   constructor(
     id: number,
-    courseOffering: CourseOffering,
+    courseOfferingId: number,
     studentName: StudentName,
     content: Content,
     quantityLikes: number,
-    conclusionDate: string,
+    conclusionDate: Date,
     approved: boolean,
   ) {
     this._id = id
-    this._courseOffering = courseOffering
+    this._courseOfferingId = courseOfferingId
     this._studentName = studentName
     this._content = content
     this._quantityLikes = quantityLikes
@@ -33,8 +32,8 @@ export class Comment {
     return this._id
   }
 
-  public get courseOffering(): CourseOffering {
-    return this._courseOffering
+  public get courseOfferingId(): number {
+    return this._courseOfferingId
   }
 
   public get studentName(): StudentName {
@@ -49,7 +48,7 @@ export class Comment {
     return this._quantityLikes
   }
 
-  public get conclusionDate(): string {
+  public get conclusionDate(): Date {
     return this._conclusionDate
   }
 

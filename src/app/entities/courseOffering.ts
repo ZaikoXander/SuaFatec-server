@@ -1,30 +1,23 @@
-import type { Comment } from './comment'
-import type { Course } from './course'
-import type { Institution } from './institution'
-
 export type Shift = 'morning' | 'afternoon' | 'night'
 
 export class CourseOffering {
   private _id: number
-  private _course: Course
-  private _institution: Institution
+  private _courseId: number
+  private _institutionId: number
   private _shifts: Shift[]
-  private _comments: Comment[]
   private _distanceLearning: boolean
 
   constructor(
     id: number,
-    course: Course,
-    institution: Institution,
+    courseId: number,
+    institutionId: number,
     shifts: Shift[],
-    comments: Comment[],
     distanceLearning: boolean,
   ) {
     this._id = id
-    this._course = course
-    this._institution = institution
+    this._courseId = courseId
+    this._institutionId = institutionId
     this._shifts = shifts
-    this._comments = comments
     this._distanceLearning = distanceLearning
   }
 
@@ -32,20 +25,16 @@ export class CourseOffering {
     return this._id
   }
 
-  public get course(): Course {
-    return this._course
+  public get courseId(): number {
+    return this._courseId
   }
 
-  public get institution(): Institution {
-    return this._institution
+  public get institutionId(): number {
+    return this._institutionId
   }
 
   public get shifts(): Shift[] {
     return this._shifts
-  }
-
-  public get comments(): Comment[] {
-    return this._comments
   }
 
   public get distanceLearning(): boolean {

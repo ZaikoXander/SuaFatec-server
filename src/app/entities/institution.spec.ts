@@ -1,9 +1,6 @@
-import { City } from './city'
 import { Institution } from './institution'
 
 describe(Institution, () => {
-  const city = new City(1, 'Praia Grande', [])
-
   describe('#constructor', () =>
     it('instantiates', () =>
       expect(
@@ -11,9 +8,7 @@ describe(Institution, () => {
           1,
           'Fatec de Praia Grande',
           'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-          city,
-          [],
-          [],
+          1,
         ),
       ).toBeInstanceOf(Institution)))
 
@@ -21,9 +16,7 @@ describe(Institution, () => {
     1,
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-    city,
-    [],
-    [],
+    1,
   )
 
   describe('#id', () => it('returns id', () => expect(institution.id).toBe(1)))
@@ -38,13 +31,6 @@ describe(Institution, () => {
         'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
       )))
 
-  describe('#city', () =>
-    it('returns city', () => expect(institution.city).toBe(city)))
-
-  describe('#photoUrls', () =>
-    it('returns photos', () => expect(institution.photos).toStrictEqual([])))
-
-  describe('#courseOfferings', () =>
-    it('returns courseOfferings', () =>
-      expect(institution.courseOfferings).toStrictEqual([])))
+  describe('#cityId', () =>
+    it('returns city id', () => expect(institution.cityId).toBe(1)))
 })

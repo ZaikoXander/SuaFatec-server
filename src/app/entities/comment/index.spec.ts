@@ -1,65 +1,27 @@
 import { Comment } from '.'
 import { StudentName } from './studentName'
 import { Content } from './content'
-import { Institution } from '../institution'
-import { City } from '../city'
-import { CourseOffering } from '../courseOffering'
-import { Course } from '../course'
 
 describe(Comment, () => {
-  const course = new Course(1, 'Ciência de Dados', 6, [])
-  const city = new City(1, 'Santos', [])
-  const institution = new Institution(
-    1,
-    'Fatec de Santos',
-    'Av. Senador Feijó, 350 - Vila Matias, Santos - SP, 11015-502',
-    city,
-    [],
-    [],
-  )
-  const courseOffering = new CourseOffering(
-    1,
-    course,
-    institution,
-    ['night'],
-    [],
-    true,
-  )
-
   const studentName = new StudentName('John Doe')
   const content = new Content(
     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, iusto.',
   )
+  const date = new Date('2022-01-01')
 
   describe('#constructor', () =>
     it('instantiates', () =>
       expect(
-        new Comment(
-          1,
-          courseOffering,
-          studentName,
-          content,
-          10,
-          '2022-01-01',
-          true,
-        ),
+        new Comment(1, 1, studentName, content, 10, date, true),
       ).toBeInstanceOf(Comment)))
 
-  const comment = new Comment(
-    1,
-    courseOffering,
-    studentName,
-    content,
-    10,
-    '2022-01-01',
-    true,
-  )
+  const comment = new Comment(1, 1, studentName, content, 10, date, true)
 
   describe('#id', () => it('returns id', () => expect(comment.id).toBe(1)))
 
-  describe('#courseOffering', () =>
-    it('returns courseOffering', () =>
-      expect(comment.courseOffering).toBe(courseOffering)))
+  describe('#courseOfferingId', () =>
+    it('returns courseOffering id', () =>
+      expect(comment.courseOfferingId).toBe(1)))
 
   describe('#studentName', () =>
     it('returns studentName', () =>
@@ -73,7 +35,7 @@ describe(Comment, () => {
 
   describe('#conclusionDate', () =>
     it('returns conclusionDate', () =>
-      expect(comment.conclusionDate).toBe('2022-01-01')))
+      expect(comment.conclusionDate).toBe(date)))
 
   describe('#approved', () =>
     it('returns approved', () => expect(comment.approved).toBe(true)))
