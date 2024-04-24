@@ -2,20 +2,16 @@ import { Comment } from '.'
 import { StudentName } from './studentName'
 import { Content } from './content'
 import { Institution } from '../institution'
-import { City } from '../city'
 import { CourseOffering } from '../courseOffering'
 import { Course } from '../course'
 
 describe(Comment, () => {
   const course = new Course(1, 'Ciência de Dados', 6, [])
-  const city = new City(1, 'Santos', [])
   const institution = new Institution(
     1,
     'Fatec de Santos',
     'Av. Senador Feijó, 350 - Vila Matias, Santos - SP, 11015-502',
-    city,
-    [],
-    [],
+    1,
   )
   const courseOffering = new CourseOffering(
     1,

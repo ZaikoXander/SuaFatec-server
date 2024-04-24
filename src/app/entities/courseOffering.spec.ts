@@ -1,18 +1,14 @@
-import { City } from './city'
 import { Course } from './course'
 import { CourseOffering } from './courseOffering'
 import { Institution } from './institution'
 
 describe(CourseOffering, () => {
   const course = new Course(1, 'Ciência de Dados', 6, [])
-  const city = new City(1, 'Praia Grande', [])
   const institution = new Institution(
     1,
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-    city,
-    [],
-    [],
+    1,
   )
 
   describe('#constructor', () =>

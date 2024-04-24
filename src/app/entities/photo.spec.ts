@@ -1,16 +1,12 @@
-import { City } from './city'
 import { Institution } from './institution'
 import { Photo } from './photo'
 
 describe(Photo, () => {
-  const city = new City(1, 'Praia Grande', [])
   const institution = new Institution(
     1,
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-    city,
-    [],
-    [],
+    1,
   )
 
   describe('#constructor', () =>
