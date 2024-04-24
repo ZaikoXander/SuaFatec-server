@@ -21,6 +21,8 @@ model City {
 
 model Course {
   id Int @id @default(autoincrement())
+  name String @unique
+  duration Int
   courseOfferings CourseOffering[]
 }
 
