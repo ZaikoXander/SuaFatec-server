@@ -1,6 +1,6 @@
 import { Institution } from '@app/entities/institution'
 
-import type { Institution as RawInstitution } from '@prisma/client'
+import { Institution as RawInstitution } from '@prisma/client'
 
 export class PrismaInstitutionMapper {
   static toDomain(raw: RawInstitution): Institution {

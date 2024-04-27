@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common'
+
 import { GetCities } from '@app/useCases/get-cities'
 import { CitiesViewModel } from '../viewModels/cities-view-model'
 

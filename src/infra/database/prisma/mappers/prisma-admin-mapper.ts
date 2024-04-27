@@ -1,6 +1,6 @@
 import { Admin } from '@app/entities/admin'
 
-import type { Admin as RawAdmin } from '@prisma/client'
+import { Admin as RawAdmin } from '@prisma/client'
 
 export class PrismaAdminMapper {
   static toDomain(raw: RawAdmin): Admin {

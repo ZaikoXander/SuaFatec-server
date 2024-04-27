@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { InstitutionsRepository } from '../repositories/institutions-repository'
 
-import type { Institution } from '../entities/institution'
+import { Institution } from '../entities/institution'
 
 interface GetInstitutionsResponse {
   institutions: Institution[]
