@@ -1,4 +1,4 @@
-import { Institution } from '../../../app/entities/institution'
+import { Institution } from '@app/entities/institution'
 
 export class InstitutionViewModel {
   static toHTTP(institution: Institution) {

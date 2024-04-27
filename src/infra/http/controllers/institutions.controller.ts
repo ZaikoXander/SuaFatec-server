@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common'
 
-import { GetInstitutions } from '../../../app/useCases/get-institutions'
+import { GetInstitutions } from '@app/useCases/get-institutions'
 import { InstitutionViewModel } from '../viewModels/institution-view-model'
 
 @Controller('institutions')

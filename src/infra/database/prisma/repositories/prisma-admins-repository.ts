@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { PrismaAdminMapper } from '../mappers/prisma-admin-mapper'
 
-import type { AdminsRepository } from 'src/app/repositories/admins-repository'
-import type { Admin } from 'src/app/entities/admin'
+import { AdminsRepository } from '@app/repositories/admins-repository'
+import { Admin } from '@app/entities/admin'
 
 @Injectable()
 export class PrismaAdminsRepository implements AdminsRepository {

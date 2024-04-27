@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { PrismaCityMapper } from '../mappers/prisma-city-mapper'
 
-import type { CitiesRepository } from '../../../../app/repositories/cities-repository'
-import type { City } from '../../../../app/entities/city'
+import { CitiesRepository } from '@app/repositories/cities-repository'
+import { City } from '@app/entities/city'
 
 @Injectable()
 export class PrismaCitiesRepository implements CitiesRepository {

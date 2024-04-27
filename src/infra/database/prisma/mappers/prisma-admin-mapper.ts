@@ -1,4 +1,4 @@
-import { Admin } from 'src/app/entities/admin'
+import { Admin } from '@app/entities/admin'
 
 import type { Admin as RawAdmin } from '@prisma/client'
 

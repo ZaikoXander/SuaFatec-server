@@ -1,4 +1,4 @@
-import { Institution } from 'src/app/entities/institution'
+import { Institution } from '@app/entities/institution'
 
 import type { Institution as RawInstitution } from '@prisma/client'
 

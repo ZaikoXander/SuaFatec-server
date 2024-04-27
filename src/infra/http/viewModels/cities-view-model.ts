@@ -1,4 +1,4 @@
-import { City } from 'src/app/entities/city'
+import { City } from '@app/entities/city'
 
 export class CitiesViewModel {
   static toHTTP(city: City) {
