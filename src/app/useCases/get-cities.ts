@@ -3,7 +3,7 @@ import { CitiesRepository } from '../repositories/cities-repository'
 
 import { City } from '../entities/city'
 
-interface GetCitiesReponse {
+interface GetCitiesResponse {
   cities: City[]
 }
 
@@ -11,7 +11,7 @@ interface GetCitiesReponse {
 export class GetCities {
   constructor(private citiesRepository: CitiesRepository) {}
 
-  async execute(): Promise<GetCitiesReponse> {
+  async execute(): Promise<GetCitiesResponse> {
     const cities = await this.citiesRepository.findAll()
 
     return { cities }
