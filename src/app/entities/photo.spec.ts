@@ -1,29 +1,13 @@
-import { City } from './city'
-import { Institution } from './institution'
 import { Photo } from './photo'
 
 describe(Photo, () => {
-  const city = new City(1, 'Praia Grande', [])
-  const institution = new Institution(
-    1,
-    'Fatec de Praia Grande',
-    'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-    city,
-    [],
-    [],
-  )
-
   describe('#constructor', () =>
     it('instantiates', () =>
       expect(
-        new Photo(1, 'https://www.fatecpg.edu.br/img/fatec.png', institution),
+        new Photo(1, 'https://www.fatecpg.edu.br/img/fatec.png', 1),
       ).toBeInstanceOf(Photo)))
 
-  const photo = new Photo(
-    1,
-    'https://www.fatecpg.edu.br/img/fatec.png',
-    institution,
-  )
+  const photo = new Photo(1, 'https://www.fatecpg.edu.br/img/fatec.png', 1)
 
   describe('#id', () => it('returns id', () => expect(photo.id).toBe(1)))
 
@@ -31,7 +15,6 @@ describe(Photo, () => {
     it('returns url', () =>
       expect(photo.url).toBe('https://www.fatecpg.edu.br/img/fatec.png')))
 
-  describe('#institution', () =>
-    it('returns institution', () =>
-      expect(photo.institution).toBe(institution)))
+  describe('#institutionId', () =>
+    it('returns institution id', () => expect(photo.institutionId).toBe(1)))
 })

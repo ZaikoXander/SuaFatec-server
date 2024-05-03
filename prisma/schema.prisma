@@ -21,6 +21,8 @@ model City {
 
 model Course {
   id Int @id @default(autoincrement())
+  name String @unique
+  duration Int
   courseOfferings CourseOffering[]
 }
 
@@ -56,6 +58,7 @@ model CourseOffering {
   institution Institution @relation(fields: [institutionId], references: [id])
   shifts Shift[]
   comments Comment[]
+  distanceLearning Boolean @default(false)
 }
 
 model Institution {
@@ -66,6 +69,8 @@ model Institution {
   city City @relation(fields: [cityId], references: [id])
   photos Photo[]
   courseOfferings CourseOffering[]
+  latitudeCoordinate Float @default(0)
+  longitudeCoordinate Float @default(0)
 }
 
 model Admin {

@@ -1,52 +1,27 @@
-import { City } from './city'
-import { Course } from './course'
 import { CourseOffering } from './courseOffering'
-import { Institution } from './institution'
 
 describe(CourseOffering, () => {
-  const course = new Course(1, 'Ciência de Dados', 6, [])
-  const city = new City(1, 'Praia Grande', [])
-  const institution = new Institution(
-    1,
-    'Fatec de Praia Grande',
-    'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
-    city,
-    [],
-    [],
-  )
-
   describe('#constructor', () =>
     it('instantiates', () =>
-      expect(
-        new CourseOffering(1, course, institution, ['night'], [], true),
-      ).toBeInstanceOf(CourseOffering)))
+      expect(new CourseOffering(1, 1, 1, ['night'], true)).toBeInstanceOf(
+        CourseOffering,
+      )))
 
-  const courseOffering = new CourseOffering(
-    1,
-    course,
-    institution,
-    ['night'],
-    [],
-    true,
-  )
+  const courseOffering = new CourseOffering(1, 1, 1, ['night'], true)
 
   describe('#id', () =>
     it('returns id', () => expect(courseOffering.id).toBe(1)))
 
-  describe('#course', () =>
-    it('returns course', () => expect(courseOffering.course).toBe(course)))
+  describe('#courseId', () =>
+    it('returns course id', () => expect(courseOffering.courseId).toBe(1)))
 
-  describe('#institution', () =>
-    it('returns institution', () =>
-      expect(courseOffering.institution).toBe(institution)))
+  describe('#institutionId', () =>
+    it('returns institution id', () =>
+      expect(courseOffering.institutionId).toBe(1)))
 
   describe('#shifts', () =>
     it('returns shifts', () =>
       expect(courseOffering.shifts).toStrictEqual(['night'])))
-
-  describe('#comments', () =>
-    it('returns comments', () =>
-      expect(courseOffering.comments).toStrictEqual([])))
 
   describe('#distanceLearning', () =>
     it('returns distanceLearning', () =>

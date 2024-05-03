@@ -1,14 +1,12 @@
-import type { Institution } from './institution'
-
 export class Photo {
   private _id: number
   private _url: string
-  private _institution: Institution
+  private _institutionId: number
 
-  constructor(id: number, url: string, institution: Institution) {
+  constructor(id: number, url: string, institutionId: number) {
     this._id = id
     this._url = url
-    this._institution = institution
+    this._institutionId = institutionId
   }
 
   public get id(): number {
@@ -19,7 +17,7 @@ export class Photo {
     return this._url
   }
 
-  public get institution(): Institution {
-    return this._institution
+  public get institutionId(): number {
+    return this._institutionId
   }
 }
