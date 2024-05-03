@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common'
 
 import { GetCities } from '@app/useCases/get-cities'
-import { CitiesViewModel } from '../viewModels/cities-view-model'
+import { CityViewModel } from '../viewModels/city-view-model'
 
 @Controller('cities')
 export class CitiesController {
@@ -11,6 +11,6 @@ export class CitiesController {
   async index() {
     const { cities } = await this.getCities.execute()
 
-    return { cities: cities.map(CitiesViewModel.toHTTP) }
+    return { cities: cities.map(CityViewModel.toHTTP) }
   }
 }

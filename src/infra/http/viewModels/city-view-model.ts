@@ -1,6 +1,6 @@
 import { City } from '@app/entities/city'
 
-export class CitiesViewModel {
+export class CityViewModel {
   static toHTTP(city: City) {
     return {
       id: city.id,
