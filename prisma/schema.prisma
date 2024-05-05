@@ -69,8 +69,8 @@ model Institution {
   city City @relation(fields: [cityId], references: [id])
   photos Photo[]
   courseOfferings CourseOffering[]
-  latitudeCoordinate Float @default(0)
-  longitudeCoordinate Float @default(0)
+  latitudeCoordinate Float
+  longitudeCoordinate Float
 }
 
 model Admin {
