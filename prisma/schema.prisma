@@ -69,6 +69,7 @@ model Institution {
   id                  Int              @id @default(autoincrement())
   name                String           @unique
   address             String           @unique
+  description         String[]
   cityId              Int
   city                City             @relation(fields: [cityId], references: [id])
   photos              Photo[]
