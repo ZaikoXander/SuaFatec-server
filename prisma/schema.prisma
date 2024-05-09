@@ -23,6 +23,7 @@ model Course {
   id              Int              @id @default(autoincrement())
   name            String           @unique
   duration        Int
+  description     String           @default("")
   photos          Photo[]
   courseOfferings CourseOffering[]
 }
