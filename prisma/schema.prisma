@@ -24,7 +24,8 @@ model Course {
   name            String           @unique
   duration        Int
   description     String           @default("")
-  photos          Photo[]
+  photoId         Int?             @unique
+  photo           Photo?           @relation(fields: [photoId], references: [id])
   courseOfferings CourseOffering[]
 }
 
@@ -50,8 +51,7 @@ model Photo {
   url           String
   institutionId Int?
   institution   Institution? @relation(fields: [institutionId], references: [id])
-  courseId      Int?
-  Course        Course?      @relation(fields: [courseId], references: [id])
+  course        Course?
 }
 
 model CourseOffering {
