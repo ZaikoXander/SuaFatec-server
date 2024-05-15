@@ -10,6 +10,7 @@ describe(Institution, () => {
             'Fatec de Praia Grande',
             'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
             ['...', '...'],
+            '(13) 3227-6003',
             1,
             0,
             0,
@@ -25,6 +26,7 @@ describe(Institution, () => {
               'Fatec de Praia Grande',
               'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
               ['...'],
+              '(13) 3227-6003',
               1,
               0,
               0,
@@ -37,6 +39,7 @@ describe(Institution, () => {
     'Fatec de Praia Grande',
     'Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100',
     ['...', '...'],
+    '(13) 3227-6003',
     1,
     0,
     0,
@@ -57,6 +60,10 @@ describe(Institution, () => {
   describe('#description', () =>
     it('returns description', () =>
       expect(institution.description).toStrictEqual(['...', '...'])))
+
+  describe('#phoneNumber', () =>
+    it('returns phone number', () =>
+      expect(institution.phoneNumber).toBe('(13) 3227-6003')))
 
   describe('#cityId', () =>
     it('returns city id', () => expect(institution.cityId).toBe(1)))
