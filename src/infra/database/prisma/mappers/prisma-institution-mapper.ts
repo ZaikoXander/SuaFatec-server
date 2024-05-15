@@ -8,6 +8,7 @@ export class PrismaInstitutionMapper {
       raw.id,
       raw.name,
       raw.address,
+      raw.description,
       raw.cityId,
       raw.latitudeCoordinate,
       raw.longitudeCoordinate,
