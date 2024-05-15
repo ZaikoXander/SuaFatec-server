@@ -6,6 +6,7 @@ export class InstitutionViewModel {
       id: institution.id,
       name: institution.name,
       address: institution.address,
+      description: institution.description,
       cityId: institution.cityId,
       latitudeCoordinate: institution.latitudeCoordinate,
       longitudeCoordinate: institution.longitudeCoordinate,
