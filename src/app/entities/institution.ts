@@ -2,6 +2,8 @@ export class Institution {
   private _id: number
   private _name: string
   private _address: string
+  private _description: string[]
+  private _phoneNumber: string
   private _cityId: number
   private _latitudeCoordinate: number
   private _longitudeCoordinate: number
@@ -10,6 +12,8 @@ export class Institution {
     id: number,
     name: string,
     address: string,
+    description: string[],
+    phoneNumber: string,
     cityId: number,
     latitudeCoordinate: number,
     longitudeCoordinate: number,
@@ -17,6 +21,13 @@ export class Institution {
     this._id = id
     this._name = name
     this._address = address
+
+    if (description.length !== 2) {
+      throw new Error('Description must have 2 paragraphs')
+    }
+
+    this._description = description
+    this._phoneNumber = phoneNumber
     this._cityId = cityId
     this._latitudeCoordinate = latitudeCoordinate
     this._longitudeCoordinate = longitudeCoordinate
@@ -32,6 +43,14 @@ export class Institution {
 
   public get address(): string {
     return this._address
+  }
+
+  public get description(): string[] {
+    return this._description
+  }
+
+  public get phoneNumber(): string {
+    return this._phoneNumber
   }
 
   public get cityId(): number {
