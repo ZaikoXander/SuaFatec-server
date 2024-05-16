@@ -6,6 +6,8 @@ export class CourseViewModel {
       id: course.id,
       name: course.name,
       duration: course.duration,
+      description: course.description,
+      photoId: course.photoId,
     }
   }
 }
