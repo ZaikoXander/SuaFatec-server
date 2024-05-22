@@ -3,21 +3,21 @@ import { Injectable } from '@nestjs/common'
 import { CommentsRepository } from '@app/repositories/comments-repository'
 import { Comment } from '@app/entities/comment'
 
-interface GetApprovedCourseOfferingsCommentsRequest {
+interface GetApprovedCourseOfferingCommentsRequest {
   courseOfferingId: number
 }
 
-interface GetApprovedCourseOfferingsCommentsResponse {
+interface GetApprovedCourseOfferingCommentsResponse {
   comments: Comment[]
 }
 
 @Injectable()
-export class GetApprovedCourseOfferingsComments {
+export class GetApprovedCourseOfferingComments {
   constructor(private commentsRepository: CommentsRepository) {}
 
   async execute({
     courseOfferingId,
-  }: GetApprovedCourseOfferingsCommentsRequest): Promise<GetApprovedCourseOfferingsCommentsResponse> {
+  }: GetApprovedCourseOfferingCommentsRequest): Promise<GetApprovedCourseOfferingCommentsResponse> {
     const comments =
       await this.commentsRepository.findManyApprovedByCourseOfferingId(
         courseOfferingId,
