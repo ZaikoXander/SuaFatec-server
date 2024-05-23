@@ -8,8 +8,9 @@ export class CommentViewModel {
       studentName: comment.studentName.value,
       content: comment.content.value,
       quantityLikes: comment.quantityLikes,
-      conclusionDate: comment.conclusionDate,
+      conclusionDate: new Date(comment.conclusionDate).toLocaleDateString(),
       approved: comment.approved,
+      liked: false,
     }
   }
 }
