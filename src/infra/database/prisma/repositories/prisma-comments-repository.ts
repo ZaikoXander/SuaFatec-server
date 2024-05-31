@@ -20,4 +20,10 @@ export class PrismaCommentsRepository implements CommentsRepository {
 
     return comments.map(PrismaCommentMapper.toDomain)
   }
+
+  async create(comment: Comment): Promise<void> {
+    await this.prisma.comment.create({
+      data: PrismaCommentMapper.toPrisma(comment),
+    })
+  }
 }

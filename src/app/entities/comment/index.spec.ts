@@ -9,15 +9,32 @@ describe(Comment, () => {
   )
   const date = new Date('2022-01-01')
 
-  describe('#constructor', () =>
-    it('instantiates', () =>
+  describe('#constructor', () => {
+    describe('when comment has id', () => {
+      it('instantiates', () =>
+        expect(
+          new Comment(1, studentName, content, date, {
+            quantityLikes: 10,
+            approved: true,
+          }),
+        ).toBeInstanceOf(Comment))
+    })
+
+    describe('when comment does not have id', () => {
       expect(
-        new Comment(1, 1, studentName, content, 10, date, true),
-      ).toBeInstanceOf(Comment)))
+        new Comment(1, studentName, content, date, {
+          quantityLikes: 10,
+          approved: true,
+        }),
+      ).toBeInstanceOf(Comment)
+    })
+  })
 
-  const comment = new Comment(1, 1, studentName, content, 10, date, true)
-
-  describe('#id', () => it('returns id', () => expect(comment.id).toBe(1)))
+  const comment = new Comment(1, studentName, content, date, {
+    quantityLikes: 10,
+    approved: true,
+    id: 1,
+  })
 
   describe('#courseOfferingId', () =>
     it('returns courseOffering id', () =>
@@ -39,4 +56,18 @@ describe(Comment, () => {
 
   describe('#approved', () =>
     it('returns approved', () => expect(comment.approved).toBe(true)))
+
+  describe('#id', () => {
+    describe('when comment has id', () => {
+      it('returns id', () => expect(comment.id).toBe(1))
+    })
+
+    describe('when comment does not have id', () => {
+      it('returns undefined', () => {
+        expect(
+          new Comment(1, studentName, content, date, { quantityLikes: 10 }).id,
+        ).toBe(undefined)
+      })
+    })
+  })
 })
