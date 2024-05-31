@@ -6,6 +6,7 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common'
 
@@ -13,12 +14,14 @@ import { GetApprovedCourseOfferingComments } from '@app/useCases/get-approved-co
 import { CreateComment } from '@app/useCases/create-comment'
 import { CommentViewModel } from '../viewModels/comment-view-model'
 import { CreateCommentBody } from '../dtos/create-comment-body'
+import { LikeComment } from '@app/useCases/like-comment'
 
 @Controller('comments')
 export class CommentsController {
   constructor(
     private getApprovedCourseOfferingComments: GetApprovedCourseOfferingComments,
     private createComment: CreateComment,
+    private likeComment: LikeComment,
   ) {}
 
   @Get(':courseOfferingId')
@@ -44,6 +47,27 @@ export class CommentsController {
       })
 
       return { comment: CommentViewModel.toHTTP(comment) }
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
+    }
+  }
+
+  @Patch(':commentId/like')
+  @HttpCode(204)
+  async like(@Param('commentId') commentId: string) {
+    try {
+      const id = Number(commentId)
+
+      await this.likeComment.execute(id)
     } catch (error) {
       throw new HttpException(
         {

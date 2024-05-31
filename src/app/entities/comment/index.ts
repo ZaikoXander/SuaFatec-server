@@ -59,6 +59,10 @@ export class Comment {
     return this._quantityLikes
   }
 
+  public like(): void {
+    this._quantityLikes += 1
+  }
+
   public get id(): number | undefined {
     return this._id
   }

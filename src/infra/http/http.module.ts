@@ -12,6 +12,7 @@ import { GetCities } from '@app/useCases/get-cities'
 import { GetInstitutionCoursesData } from '@app/useCases/get-institution-courses-data'
 import { GetApprovedCourseOfferingComments } from '@app/useCases/get-approved-courseOffering-comments'
 import { CreateComment } from '@app/useCases/create-comment'
+import { LikeComment } from '@app/useCases/like-comment'
 
 @Module({
   imports: [DatabaseModule],
@@ -27,6 +28,7 @@ import { CreateComment } from '@app/useCases/create-comment'
     GetInstitutionCoursesData,
     GetApprovedCourseOfferingComments,
     CreateComment,
+    LikeComment,
   ],
 })
 export class HttpModule {}

@@ -50,6 +50,13 @@ describe(Comment, () => {
   describe('#quantityLikes', () =>
     it('returns quantityLikes', () => expect(comment.quantityLikes).toBe(10)))
 
+  describe('#like', () => {
+    it('increases quantityLikes by 1', () => {
+      comment.like()
+      expect(comment.quantityLikes).toBe(11)
+    })
+  })
+
   describe('#conclusionDate', () =>
     it('returns conclusionDate', () =>
       expect(comment.conclusionDate).toBe(date)))

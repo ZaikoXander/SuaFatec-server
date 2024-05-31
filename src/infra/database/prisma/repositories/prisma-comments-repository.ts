@@ -8,6 +8,16 @@ import { PrismaCommentMapper } from '../mappers/prisma-comment-mapper'
 export class PrismaCommentsRepository implements CommentsRepository {
   constructor(private prisma: PrismaService) {}
 
+  async findById(commentId: number): Promise<Comment> {
+    const comment = await this.prisma.comment.findUnique({
+      where: {
+        id: commentId,
+      },
+    })
+
+    return PrismaCommentMapper.toDomain(comment)
+  }
+
   async findManyApprovedByCourseOfferingId(
     courseOfferingId: number,
   ): Promise<Comment[]> {
@@ -23,6 +33,15 @@ export class PrismaCommentsRepository implements CommentsRepository {
 
   async create(comment: Comment): Promise<void> {
     await this.prisma.comment.create({
+      data: PrismaCommentMapper.toPrisma(comment),
+    })
+  }
+
+  async save(comment: Comment): Promise<void> {
+    await this.prisma.comment.update({
+      where: {
+        id: comment.id,
+      },
       data: PrismaCommentMapper.toPrisma(comment),
     })
   }
