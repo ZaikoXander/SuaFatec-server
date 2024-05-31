@@ -64,6 +64,10 @@ export class Comment {
   }
 
   public dislike(): void {
+    if (this._quantityLikes <= 0) {
+      throw new Error('Comment has no likes')
+    }
+
     this._quantityLikes -= 1
   }
 
