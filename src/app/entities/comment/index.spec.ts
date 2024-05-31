@@ -30,10 +30,14 @@ describe(Comment, () => {
     })
   })
 
-  const comment = new Comment(1, studentName, content, date, {
-    quantityLikes: 10,
-    approved: true,
-    id: 1,
+  let comment: Comment
+
+  beforeEach(() => {
+    comment = new Comment(1, studentName, content, date, {
+      quantityLikes: 10,
+      approved: true,
+      id: 1,
+    })
   })
 
   describe('#courseOfferingId', () =>
@@ -49,6 +53,20 @@ describe(Comment, () => {
 
   describe('#quantityLikes', () =>
     it('returns quantityLikes', () => expect(comment.quantityLikes).toBe(10)))
+
+  describe('#like', () => {
+    it('increases quantityLikes by 1', () => {
+      comment.like()
+      expect(comment.quantityLikes).toBe(11)
+    })
+  })
+
+  describe('#dislike', () => {
+    it('decreases quantityLikes by 1', () => {
+      comment.dislike()
+      expect(comment.quantityLikes).toBe(9)
+    })
+  })
 
   describe('#conclusionDate', () =>
     it('returns conclusionDate', () =>
