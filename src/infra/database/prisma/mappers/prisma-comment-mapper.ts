@@ -6,13 +6,27 @@ import { Content } from '@app/entities/comment/content'
 export class PrismaCommentMapper {
   static toDomain(raw: RawComment): Comment {
     return new Comment(
-      raw.id,
       raw.courseOfferingId,
       new StudentName(raw.studentName),
       new Content(raw.content),
-      raw.quantityLikes,
       raw.conclusionDate,
-      raw.approved,
+      {
+        approved: raw.approved,
+        quantityLikes: raw.quantityLikes,
+        id: raw.id,
+      },
     )
+  }
+
+  static toPrisma(comment: Comment): RawComment {
+    return {
+      id: comment.id,
+      courseOfferingId: comment.courseOfferingId,
+      studentName: comment.studentName.value,
+      content: comment.content.value,
+      quantityLikes: comment.quantityLikes,
+      conclusionDate: comment.conclusionDate,
+      approved: comment.approved,
+    }
   }
 }
