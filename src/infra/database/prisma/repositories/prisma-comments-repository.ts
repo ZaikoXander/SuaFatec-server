@@ -31,10 +31,22 @@ export class PrismaCommentsRepository implements CommentsRepository {
     return comments.map(PrismaCommentMapper.toDomain)
   }
 
-  async create(comment: Comment): Promise<void> {
-    await this.prisma.comment.create({
+  async findAllNotApproved(): Promise<Comment[]> {
+    const comments = await this.prisma.comment.findMany({
+      where: {
+        approved: false,
+      },
+    })
+
+    return comments.map(PrismaCommentMapper.toDomain)
+  }
+
+  async create(comment: Comment): Promise<number> {
+    const { id } = await this.prisma.comment.create({
       data: PrismaCommentMapper.toPrisma(comment),
     })
+
+    return id
   }
 
   async save(comment: Comment): Promise<void> {

@@ -55,6 +55,14 @@ export class Comment {
     return this._approved
   }
 
+  public approve(): void {
+    this._approved = true
+  }
+
+  public disapprove(): void {
+    this._approved = false
+  }
+
   public get quantityLikes(): number {
     return this._quantityLikes
   }
@@ -73,5 +81,9 @@ export class Comment {
 
   public get id(): number | undefined {
     return this._id
+  }
+
+  public set id(id: number) {
+    this._id = id
   }
 }

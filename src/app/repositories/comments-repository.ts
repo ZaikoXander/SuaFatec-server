@@ -7,7 +7,9 @@ export abstract class CommentsRepository {
     courseOfferingId: number,
   ): Promise<Comment[]>
 
-  abstract create(comment: Comment): Promise<void>
+  abstract findAllNotApproved(): Promise<Comment[]>
+
+  abstract create(comment: Comment): Promise<number>
 
   abstract save(comment: Comment): Promise<void>
 }
