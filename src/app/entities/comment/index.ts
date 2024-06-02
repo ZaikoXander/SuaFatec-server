@@ -55,6 +55,14 @@ export class Comment {
     return this._approved
   }
 
+  public approve(): void {
+    this._approved = true
+  }
+
+  public disapprove(): void {
+    this._approved = false
+  }
+
   public get quantityLikes(): number {
     return this._quantityLikes
   }

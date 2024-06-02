@@ -16,6 +16,8 @@ import { CommentViewModel } from '../viewModels/comment-view-model'
 import { CreateCommentBody } from '../dtos/create-comment-body'
 import { LikeComment } from '@app/useCases/like-comment'
 import { DislikeComment } from '@app/useCases/dislike-comment'
+import { ApproveComment } from '@app/useCases/approve-comment'
+import { DisapproveComment } from '@app/useCases/disapprove-comment'
 
 @Controller('comments')
 export class CommentsController {
@@ -24,6 +26,8 @@ export class CommentsController {
     private createComment: CreateComment,
     private likeComment: LikeComment,
     private dislikeComment: DislikeComment,
+    private approveComment: ApproveComment,
+    private disapproveComment: DisapproveComment,
   ) {}
 
   @Get(':courseOfferingId')
@@ -91,6 +95,48 @@ export class CommentsController {
       const id = Number(commentId)
 
       await this.dislikeComment.execute(id)
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
+    }
+  }
+
+  @Patch(':commentId/approve')
+  @HttpCode(204)
+  async approve(@Param('commentId') commentId: string) {
+    try {
+      const id = Number(commentId)
+
+      await this.approveComment.execute(id)
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
+    }
+  }
+
+  @Patch(':commentId/disapprove')
+  @HttpCode(204)
+  async disapprove(@Param('commentId') commentId: string) {
+    try {
+      const id = Number(commentId)
+
+      await this.disapproveComment.execute(id)
     } catch (error) {
       throw new HttpException(
         {
