@@ -18,6 +18,7 @@ import { LikeComment } from '@app/useCases/like-comment'
 import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
 import { DisapproveComment } from '@app/useCases/disapprove-comment'
+import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
 
 @Controller('comments')
 export class CommentsController {
@@ -28,15 +29,27 @@ export class CommentsController {
     private dislikeComment: DislikeComment,
     private approveComment: ApproveComment,
     private disapproveComment: DisapproveComment,
+    private getNotApprovedComments: GetNotApprovedComments,
   ) {}
 
-  @Get(':courseOfferingId')
-  async index(@Param('courseOfferingId') courseOfferingId: string) {
+  @Get('course-offering/:id')
+  async index(@Param('id') courseOfferingId: string) {
     const { comments } = await this.getApprovedCourseOfferingComments.execute({
       courseOfferingId: Number(courseOfferingId),
     })
 
     return { comments: comments.map(CommentViewModel.toHTTP) }
+  }
+
+  @Get('not-approved')
+  async notApproved() {
+    try {
+      const { comments } = await this.getNotApprovedComments.execute()
+
+      return { comments: comments.map(CommentViewModel.toHTTP) }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   @Post()

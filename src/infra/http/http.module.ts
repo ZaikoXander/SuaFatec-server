@@ -16,6 +16,7 @@ import { LikeComment } from '@app/useCases/like-comment'
 import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
 import { DisapproveComment } from '@app/useCases/disapprove-comment'
+import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
 
 @Module({
   imports: [DatabaseModule],
@@ -35,6 +36,7 @@ import { DisapproveComment } from '@app/useCases/disapprove-comment'
     DislikeComment,
     ApproveComment,
     DisapproveComment,
+    GetNotApprovedComments,
   ],
 })
 export class HttpModule {}
