@@ -32,7 +32,9 @@ export class CreateComment {
       conclusionDate,
     )
 
-    await this.commentsRepository.create(comment)
+    const commentId = await this.commentsRepository.create(comment)
+
+    comment.id = commentId
 
     return { comment }
   }

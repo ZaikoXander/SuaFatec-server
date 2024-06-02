@@ -74,4 +74,8 @@ export class Comment {
   public get id(): number | undefined {
     return this._id
   }
+
+  public set id(id: number) {
+    this._id = id
+  }
 }
