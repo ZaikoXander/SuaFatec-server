@@ -48,7 +48,16 @@ export class CommentsController {
 
       return { comments: comments.map(CommentViewModel.toHTTP) }
     } catch (error) {
-      console.error(error)
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
     }
   }
 
