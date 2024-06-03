@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common'
 
 import { GetApprovedCourseOfferingComments } from '@app/useCases/get-approved-courseOffering-comments'
@@ -19,6 +20,7 @@ import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
 import { DisapproveComment } from '@app/useCases/disapprove-comment'
 import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
+import { AuthGuard } from '@infra/auth/auth.guard'
 
 @Controller('comments')
 export class CommentsController {
@@ -41,6 +43,7 @@ export class CommentsController {
     return { comments: comments.map(CommentViewModel.toHTTP) }
   }
 
+  @UseGuards(AuthGuard)
   @Get('not-approved')
   async notApproved() {
     try {
@@ -131,6 +134,7 @@ export class CommentsController {
     }
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':commentId/approve')
   @HttpCode(204)
   async approve(@Param('commentId') commentId: string) {
@@ -152,6 +156,7 @@ export class CommentsController {
     }
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':commentId/disapprove')
   @HttpCode(204)
   async disapprove(@Param('commentId') commentId: string) {
