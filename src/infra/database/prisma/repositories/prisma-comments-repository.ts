@@ -7,6 +7,13 @@ import { PrismaCommentMapper } from '../mappers/prisma-comment-mapper'
 @Injectable()
 export class PrismaCommentsRepository implements CommentsRepository {
   constructor(private prisma: PrismaService) {}
+  async delete(commentId: number): Promise<void> {
+    await this.prisma.comment.delete({
+      where: {
+        id: commentId,
+      },
+    })
+  }
 
   async findById(commentId: number): Promise<Comment> {
     const comment = await this.prisma.comment.findUnique({

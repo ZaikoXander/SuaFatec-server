@@ -17,7 +17,7 @@ import { CreateComment } from '@app/useCases/create-comment'
 import { LikeComment } from '@app/useCases/like-comment'
 import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
-import { DisapproveComment } from '@app/useCases/disapprove-comment'
+import { DeleteComment } from '@app/useCases/delete-comment'
 import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
 import { AuthenticateAdmin } from '@app/useCases/authenticate-admin'
 
@@ -46,7 +46,7 @@ import { AuthenticateAdmin } from '@app/useCases/authenticate-admin'
     LikeComment,
     DislikeComment,
     ApproveComment,
-    DisapproveComment,
+    DeleteComment,
     GetNotApprovedComments,
     AuthenticateAdmin,
   ],
