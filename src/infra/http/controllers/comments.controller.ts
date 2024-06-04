@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpException,
@@ -18,7 +19,7 @@ import { CreateCommentBody } from '../dtos/create-comment-body'
 import { LikeComment } from '@app/useCases/like-comment'
 import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
-import { DisapproveComment } from '@app/useCases/disapprove-comment'
+import { DeleteComment } from '@app/useCases/delete-comment'
 import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
 import { AuthGuard } from '@infra/auth/auth.guard'
 
@@ -30,7 +31,7 @@ export class CommentsController {
     private likeComment: LikeComment,
     private dislikeComment: DislikeComment,
     private approveComment: ApproveComment,
-    private disapproveComment: DisapproveComment,
+    private deleteComment: DeleteComment,
     private getNotApprovedComments: GetNotApprovedComments,
   ) {}
 
@@ -157,13 +158,13 @@ export class CommentsController {
   }
 
   @UseGuards(AuthGuard)
-  @Patch(':commentId/disapprove')
-  @HttpCode(204)
+  @Delete(':commentId')
+  @HttpCode(200)
   async disapprove(@Param('commentId') commentId: string) {
     try {
       const id = Number(commentId)
 
-      await this.disapproveComment.execute(id)
+      await this.deleteComment.execute(id)
     } catch (error) {
       throw new HttpException(
         {

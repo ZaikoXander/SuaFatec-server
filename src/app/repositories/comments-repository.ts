@@ -11,5 +11,7 @@ export abstract class CommentsRepository {
 
   abstract create(comment: Comment): Promise<number>
 
+  abstract delete(commentId: number): Promise<void>
+
   abstract save(comment: Comment): Promise<void>
 }
