@@ -41,7 +41,11 @@ export class CommentsController {
       courseOfferingId: Number(courseOfferingId),
     })
 
-    return { comments: comments.map(CommentViewModel.toHTTP) }
+    return {
+      comments: comments.map((comment) =>
+        CommentViewModel.toHTTP(comment, true),
+      ),
+    }
   }
 
   @UseGuards(AuthGuard)
@@ -50,7 +54,9 @@ export class CommentsController {
     try {
       const { comments } = await this.getNotApprovedComments.execute()
 
-      return { comments: comments.map(CommentViewModel.toHTTP) }
+      return {
+        comments: comments.map((comment) => CommentViewModel.toHTTP(comment)),
+      }
     } catch (error) {
       throw new HttpException(
         {
@@ -78,7 +84,7 @@ export class CommentsController {
         conclusionDate,
       })
 
-      return { comment: CommentViewModel.toHTTP(comment) }
+      return { comment: CommentViewModel.toHTTP(comment, true) }
     } catch (error) {
       throw new HttpException(
         {

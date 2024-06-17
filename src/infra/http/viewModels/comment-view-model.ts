@@ -1,7 +1,7 @@
 import { Comment } from '@app/entities/comment'
 
 export class CommentViewModel {
-  static toHTTP(comment: Comment) {
+  static toHTTP(comment: Comment, withLiked = false) {
     return {
       id: comment.id,
       courseOfferingId: comment.courseOfferingId,
@@ -13,7 +13,7 @@ export class CommentViewModel {
         { year: 'numeric', month: '2-digit', day: '2-digit' },
       ),
       approved: comment.approved,
-      liked: false,
+      ...(withLiked && { liked: false }),
     }
   }
 }
