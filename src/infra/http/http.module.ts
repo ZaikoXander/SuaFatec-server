@@ -8,10 +8,12 @@ import { CitiesController } from './controllers/cities.controller'
 import { InstitutionCoursesDataController } from './controllers/institution-courses-data.controller'
 import { CommentsController } from './controllers/comments.controller'
 import { AdminsController } from './controllers/admins.controller'
+import { PhotosController } from './controllers/photos.controller'
 
 import { GetInstitutions } from '@app/useCases/get-institutions'
 import { GetCities } from '@app/useCases/get-cities'
 import { GetInstitutionCoursesData } from '@app/useCases/get-institution-courses-data'
+
 import { GetApprovedCourseOfferingComments } from '@app/useCases/get-approved-courseOffering-comments'
 import { CreateComment } from '@app/useCases/create-comment'
 import { LikeComment } from '@app/useCases/like-comment'
@@ -19,7 +21,11 @@ import { DislikeComment } from '@app/useCases/dislike-comment'
 import { ApproveComment } from '@app/useCases/approve-comment'
 import { DeleteComment } from '@app/useCases/delete-comment'
 import { GetNotApprovedComments } from '@app/useCases/get-not-approved-comments'
+
 import { AuthenticateAdmin } from '@app/useCases/authenticate-admin'
+
+import { GetInstitutionPhotos } from '@app/useCases/get-institution-photos'
+import { GetCoursePhoto } from '@app/useCases/get-course-photos'
 
 @Module({
   imports: [
@@ -36,6 +42,7 @@ import { AuthenticateAdmin } from '@app/useCases/authenticate-admin'
     InstitutionCoursesDataController,
     CommentsController,
     AdminsController,
+    PhotosController,
   ],
   providers: [
     GetInstitutions,
@@ -49,6 +56,8 @@ import { AuthenticateAdmin } from '@app/useCases/authenticate-admin'
     DeleteComment,
     GetNotApprovedComments,
     AuthenticateAdmin,
+    GetInstitutionPhotos,
+    GetCoursePhoto,
   ],
 })
 export class HttpModule {}
