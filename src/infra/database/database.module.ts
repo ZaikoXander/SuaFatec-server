@@ -8,6 +8,7 @@ import { CourseOfferingsRepository } from '@app/repositories/courseOfferings-rep
 import { CoursesRepository } from '@app/repositories/courses-repository'
 import { CommentsRepository } from '@app/repositories/comments-repository'
 import { AdminsRepository } from '@app/repositories/admins-repository'
+import { PhotosRepository } from '@app/repositories/photos-repository'
 
 import { PrismaInstitutionsRepository } from './prisma/repositories/prisma-institutions-repository'
 import { PrismaCitiesRepository } from './prisma/repositories/prisma-cities-repository'
@@ -15,6 +16,7 @@ import { PrismaCourseOfferingsRepository } from './prisma/repositories/prisma-co
 import { PrismaCoursesRepository } from './prisma/repositories/prisma-courses-repository'
 import { PrismaCommentsRepository } from './prisma/repositories/prisma-comments-repository'
 import { PrismaAdminsRepository } from './prisma/repositories/prisma-admins-repository'
+import { PrismaPhotosRepository } from './prisma/repositories/prisma-photos-repository'
 
 @Module({
   providers: [
@@ -43,6 +45,10 @@ import { PrismaAdminsRepository } from './prisma/repositories/prisma-admins-repo
       provide: AdminsRepository,
       useClass: PrismaAdminsRepository,
     },
+    {
+      provide: PhotosRepository,
+      useClass: PrismaPhotosRepository,
+    },
   ],
   exports: [
     InstitutionsRepository,
@@ -51,6 +57,7 @@ import { PrismaAdminsRepository } from './prisma/repositories/prisma-admins-repo
     CoursesRepository,
     CommentsRepository,
     AdminsRepository,
+    PhotosRepository,
   ],
 })
 export class DatabaseModule {}
