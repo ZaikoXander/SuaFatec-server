@@ -37,14 +37,27 @@ export class CommentsController {
 
   @Get('course-offering/:id')
   async index(@Param('id') courseOfferingId: string) {
-    const { comments } = await this.getApprovedCourseOfferingComments.execute({
-      courseOfferingId: Number(courseOfferingId),
-    })
+    try {
+      const { comments } = await this.getApprovedCourseOfferingComments.execute(
+        { courseOfferingId: Number(courseOfferingId) },
+      )
 
-    return {
-      comments: comments.map((comment) =>
-        CommentViewModel.toHTTP(comment, true),
-      ),
+      return {
+        comments: comments.map((comment) =>
+          CommentViewModel.toHTTP(comment, true),
+        ),
+      }
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
     }
   }
 

@@ -1,4 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+} from '@nestjs/common'
 
 import { GetInstitutionCoursesData } from '@app/useCases/get-institution-courses-data'
 
@@ -11,14 +17,27 @@ export class InstitutionCoursesDataController {
 
   @Get(':institutionId')
   async index(@Param('institutionId') institutionId: string) {
-    const { courses, courseOfferings } =
-      await this.getInstitutionCoursesData.execute({
-        institutionId: Number(institutionId),
-      })
+    try {
+      const { courses, courseOfferings } =
+        await this.getInstitutionCoursesData.execute({
+          institutionId: Number(institutionId),
+        })
 
-    return {
-      courses: courses.map(CourseViewModel.toHTTP),
-      courseOfferings: courseOfferings.map(CourseOfferingViewModel.toHTTP),
+      return {
+        courses: courses.map(CourseViewModel.toHTTP),
+        courseOfferings: courseOfferings.map(CourseOfferingViewModel.toHTTP),
+      }
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
     }
   }
 }

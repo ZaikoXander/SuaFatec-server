@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common'
 
 import { GetCities } from '@app/useCases/get-cities'
 import { CityViewModel } from '../viewModels/city-view-model'
@@ -9,8 +9,21 @@ export class CitiesController {
 
   @Get()
   async index() {
-    const { cities } = await this.getCities.execute()
+    try {
+      const { cities } = await this.getCities.execute()
 
-    return { cities: cities.map(CityViewModel.toHTTP) }
+      return { cities: cities.map(CityViewModel.toHTTP) }
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: error.message,
+        },
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error,
+        },
+      )
+    }
   }
 }

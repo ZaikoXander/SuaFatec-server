@@ -21,11 +21,6 @@ export class Institution {
     this._id = id
     this._name = name
     this._address = address
-
-    if (description.length !== 2) {
-      throw new Error('Description must have 2 paragraphs')
-    }
-
     this._description = description
     this._phoneNumber = phoneNumber
     this._cityId = cityId
